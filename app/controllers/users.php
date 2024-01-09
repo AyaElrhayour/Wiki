@@ -66,18 +66,17 @@ class Users extends Controller
         $result = $this->UserDao->insertUser($data);
         if ($result == false) {
           echo '<div class="bg-green-500 rounded-xl text-white p-2 my-2">Registration successful!</div>';
+        } else {
+          if (!$this->UserDao->getUserByEmail($data['email'])) {
+            echo '<div class="bg-red-500 rounded-xl text-white p-2 my-2">Email already exists. Please choose a different email.</div>';
+          } else {
+            echo '<div class="bg-red-500 rounded-xl text-white p-2 my-2">Registration failed. Please try again later.</div>';
+          }
         }
-        // else {
-        //     if (!$this->UserDao->getUserByEmail($data['email'])) {
-        //         echo '<div class="bg-red-500 rounded-xl text-white p-2 my-2">Email already exists. Please choose a different email.</div>';
-        //     } else {
-        //         echo '<div class="bg-red-500 rounded-xl text-white p-2 my-2">Registration failed. Please try again later.</div>';
-        //     }
-        // }
       }
     }
 
-    $this->view('pages/registration/register', $data);
+    $this->view('pages/register');
   }
 
   public function logIn()
@@ -103,15 +102,17 @@ class Users extends Controller
           echo '<div class="bg-red-500 rounded-xl text-white p-2 my-2">' . $error . '</div>';
         }
       } else {
-        $result = $this->UserDao->getUserByEmail($email);
-        $results = get_object_vars($result);
-        if ($result && count($results) > 0) {
-          $user = $results;
-          $enteredPass = $user["password"];
-          $role = $user["role"];
+        $user = $this->UserDao->getUserByEmail($email);
+
+        if ($user) {
+
+          // die(print($user->role));
+          $enteredPass = $user->password;
+          // die("hhhh");
+          $role = $user->role;
           $_SESSION['role'] = $role;
           $_SESSION['email'] = $email;
-          $_SESSION['id'] = $user["id"];
+          $_SESSION['id'] = $user->id;
           if ($user && password_verify($password, $enteredPass)) {
             $this->redirectBasedOnRole($role);
           } else {
@@ -123,21 +124,16 @@ class Users extends Controller
       }
     }
 
-    $this->view('pages/registration/register');
+    $this->view('pages/register');
   }
 
   private function redirectBasedOnRole($role)
   {
-    switch ($role) {
-      case 'admin':
-        redirect('dashboard');
-        // echo '<script>window.location.replace("' . URLROOT . '/DashbordControler");</script>'; // Remove this line
-        break;
-      case 'client':
-        redirect('/UserController.php');
-        break;
-      default:
-        break;
+    if ($role === 'admin') {
+      header('pages/dashboard');
+      // echo '<script>window.location.replace("' . URLROOT . '/DashbordControler");</script>'; // Remove this line
+    } elseif ($role === 'user') {
+      header("location: " . URLROOT . "/views/pages/home.php");
     }
   }
 }
