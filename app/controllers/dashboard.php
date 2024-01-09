@@ -27,4 +27,10 @@ class Dashboard extends Controller
 
     $this->view('pages/dashboard', $data);
   }
+
+  public function deleteCategory($id) {
+    if($this->CategoryDao->deleteCategory($id)) {
+      redirect("dashboard");
+    }
+  }
 }
