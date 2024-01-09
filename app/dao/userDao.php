@@ -9,11 +9,7 @@ class UserDao extends crudDao
     parent::__construct();
     $this->tablename = 'users';
   }
-  private function isEmailUnique($email)
-  {
-    $existingUser = $this->getUserByEmail($email);
-    return !$existingUser;
-  }
+
 
   public function insertUser($data)
   {
@@ -31,5 +27,11 @@ class UserDao extends crudDao
     $this->db->execute();
 
     return $this->db->single();
+  }
+
+  private function isEmailUnique($email)
+  {
+    $existingUser = $this->getUserByEmail($email);
+    return !$existingUser;
   }
 }

@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <form action="<?php echo URLROOT; ?>/users/signUp" method="post">
+  <!-- <form action="<?php //echo URLROOT; ?>/users/signUp" method="post">
     <input type="text" name="name" placeholder="name">
     <input type="text" name="last_name" placeholder="last name">
     <input type="text" name="email" placeholder="email">
@@ -23,6 +23,13 @@
       <option value="2">User</option>
     </select>
     <button name="signup">submit</button>
+  </form> -->
+
+
+  <form action="<?php echo URLROOT; ?>/users/logIn" method="post">
+    <input type="input" name="email" placeholder="email">
+    <input type="input" name="password" placeholder="password">
+    <button name="login">submit</button>
   </form>
 </body>
 
