@@ -27,4 +27,13 @@ class Pages extends Controller
 
     $this->view('pages/about', $data);
   }
+
+
+  public function home()
+  {
+    $data = [
+      'title' => 'Home'
+    ];
+    $this->view('pages/home', $data);
+  }
 }

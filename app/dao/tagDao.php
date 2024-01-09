@@ -1,6 +1,6 @@
 <?php
 
-class Tag extends crudDao{
+class TagDao extends crudDao{
 
   public function __construct()
   {

@@ -1,6 +1,5 @@
 <?php
 
-require_once(APPROOT . '/models/wiki.php');
 
 class WikiDao extends crudDao{
 

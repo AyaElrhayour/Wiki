@@ -1,7 +1,4 @@
 <?php
-require_once(APPROOT . '/models/category.php');
-require_once(APPROOT . '/dao/crudDao.php');
-
 
 
 class CategoryDao extends crudDao

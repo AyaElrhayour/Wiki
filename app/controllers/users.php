@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-unset($_SESSION['id']);
-unset($_SESSION['role']);
+// unset($_SESSION['id']);
+// unset($_SESSION['role']);
 
 class Users extends Controller
 {
@@ -81,7 +81,9 @@ class Users extends Controller
 
   public function logIn()
   {
+
     if (isset($_POST["login"])) {
+
       $email = $_POST["email"];
       $password = $_POST["password"];
 
@@ -98,22 +100,25 @@ class Users extends Controller
       }
 
       if (count($errors) > 0) {
+
         foreach ($errors as $error) {
           echo '<div class="bg-red-500 rounded-xl text-white p-2 my-2">' . $error . '</div>';
         }
       } else {
+
         $user = $this->UserDao->getUserByEmail($email);
 
         if ($user) {
 
           // die(print($user->role));
           $enteredPass = $user->password;
-          // die("hhhh");
+          // die("here");
           $role = $user->role;
           $_SESSION['role'] = $role;
           $_SESSION['email'] = $email;
           $_SESSION['id'] = $user->id;
           if ($user && password_verify($password, $enteredPass)) {
+
             $this->redirectBasedOnRole($role);
           } else {
             echo '<div class="bg-red-500 rounded-xl text-white p-2 my-2">Password incorrect</div>';
@@ -130,10 +135,9 @@ class Users extends Controller
   private function redirectBasedOnRole($role)
   {
     if ($role === 'admin') {
-      header('pages/dashboard');
-      // echo '<script>window.location.replace("' . URLROOT . '/DashbordControler");</script>'; // Remove this line
+      header('location:' . URLROOT . '/dashboard');
     } elseif ($role === 'user') {
-      header("location: " . URLROOT . "/views/pages/home.php");
+      header('location:' . URLROOT . '/pages/home');
     }
   }
 }

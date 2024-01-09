@@ -1,13 +1,13 @@
 <?php
 
-  require_once 'config/config.php';
+require_once 'config/config.php';
 
 spl_autoload_register(function ($className) {
   $classPath = '';
   if (strpos($className, 'Dao') !== false) {
-      $classPath = 'dao/';
+    $classPath = 'dao/';
   } else {
-      $classPath = 'libraries/';
+    $classPath = 'libraries/';
   }
 
   require_once $classPath . $className . '.php';
