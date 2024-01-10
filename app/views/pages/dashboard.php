@@ -151,7 +151,7 @@
                   <td class="btns">
                     <input type="hidden" value="<?php //echo $category["category_id"];
                                                 ?>">
-                    <button name="modifyCategory" class="btn update_btn"><ion-icon name="create"></ion-icon></button>
+                    <button name="modifyCategory" class="btn update_category_btn"><ion-icon name="create"></ion-icon></button>
                     <form action="<?php echo URLROOT; ?>/dashboard/deleteCategory" method="post">
                       <input id="deleteCategory" name="id" type="hidden" value="<?= $category->__get("id"); ?>">
                       <button name="deleteCategory" class="btn delete_btn" type="submit"><ion-icon name="trash-sharp"></ion-icon></button>
@@ -163,7 +163,18 @@
               <?php
 
               }  ?>
-
+              <!-- <div class="popup categorymodifypopup">
+                <div class="close-btn categorymodifyclose-btn"><ion-icon name="close-circle-outline"></ion-icon></div>
+                <form method="post" action="<?php echo URLROOT; ?>/dashboard/updateCategory">
+                  <h2>Update Category</h2>
+                  <div class="form-element">
+                    <input name="name" type="text" placeholder="New Category Name">
+                  </div>
+                  <div class="form-element">
+                    <button>Update</button>
+                  </div>
+                </form>
+              </div> -->
 
 
             </tbody>
@@ -204,22 +215,28 @@
                 </td>
                 <td class="btns">
                   <input type="hidden" value="<?php ?>">
-                  <button name="modifyCategory" class="btn update_btn"><ion-icon name="create"></ion-icon></button>
+
+                  <button name="modifyTag" class="btn tagupdate_btn update_btn" id="show-modifytag"><ion-icon name="create"></ion-icon></button>
 
                   <form action="<?php echo URLROOT; ?>/dashboard/deleteTag" method="post">
                     <input id="deleteTag" name="id" type="hidden" value="<?php echo $tag->__get("id"); ?>">
                     <button name="deleteTag" class="btn delete_btn" type="submit"><ion-icon name="trash-sharp"></ion-icon></button>
                   </form>
-
                 </td>
               </tr>
-
-            <?php
-
-            }
-
-            ?>
-
+            <?php } ?>
+            <div class="popup tagmodifypopup">
+              <div class="close-btn tagmodifyclose-btn"><ion-icon name="close-circle-outline"></ion-icon></div>
+              <form method="post" action="<?php echo URLROOT; ?>/dashboard/addTag">
+                <h2>Update Tag</h2>
+                <div class="form-element">
+                  <input name="name" type="text" placeholder="New Tag Name">
+                </div>
+                <div class="form-element">
+                  <button>Update</button>
+                </div>
+              </form>
+            </div>
 
 
           </table>
