@@ -163,7 +163,7 @@
               <?php
 
               }  ?>
-              <!-- <div class="popup categorymodifypopup">
+              <div class="popup categorymodifypopup">
                 <div class="close-btn categorymodifyclose-btn"><ion-icon name="close-circle-outline"></ion-icon></div>
                 <form method="post" action="<?php echo URLROOT; ?>/dashboard/updateCategory">
                   <h2>Update Category</h2>
@@ -174,7 +174,7 @@
                     <button>Update</button>
                   </div>
                 </form>
-              </div> -->
+              </div>
 
 
             </tbody>
