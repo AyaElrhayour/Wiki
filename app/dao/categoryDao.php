@@ -12,7 +12,13 @@ class CategoryDao extends crudDao
 
   public function getAllCategories()
   {
-    return $this->getAll();
+    $array = [];
+    $categories = $this->getAll();
+    foreach ($categories as $category) {
+      $categoryEntity = new Category($category->id, $category->name);
+      $array[] = $categoryEntity;
+    }
+    return $array;
   }
 
   public function insertCategory($data)

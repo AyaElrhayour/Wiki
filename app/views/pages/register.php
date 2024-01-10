@@ -35,7 +35,7 @@
                     ?>/users/logIn" method="post">
         <label for="chk" aria-hidden="true">login</label>
         <input type="input" name="email" placeholder="email">
-        <input type="input" name="password" placeholder="password">
+        <input type="password" name="password" placeholder="password">
         <button name="login">submit</button>
       </form>
     </div>

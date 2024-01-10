@@ -17,16 +17,16 @@
         <li>
           <a href="#">
             <span class="icon">
-              <ion-icon name="logo-apple"></ion-icon>
+              <ion-icon name="globe-outline"></ion-icon>
             </span>
-            <span class="title">Brand Name</span>
+            <span class="title"><b>Wiki<sup>TM</sup></b></span>
           </a>
         </li>
 
         <li>
           <a href="#">
             <span class="icon">
-              <ion-icon name="home-outline"></ion-icon>
+              <ion-icon name="file-tray-stacked"></ion-icon>
             </span>
             <span class="title">Dashboard</span>
           </a>
@@ -35,54 +35,27 @@
         <li>
           <a href="#">
             <span class="icon">
-              <ion-icon name="people-outline"></ion-icon>
+              <ion-icon name="person"></ion-icon>
             </span>
-            <span class="title">Customers</span>
+            <span class="title">Account</span>
           </a>
         </li>
 
         <li>
           <a href="#">
             <span class="icon">
-              <ion-icon name="chatbubble-outline"></ion-icon>
+              <ion-icon name="archive"></ion-icon>
             </span>
-            <span class="title">Messages</span>
+            <span class="title">Archived wikis</span>
           </a>
         </li>
 
         <li>
           <a href="#">
             <span class="icon">
-              <ion-icon name="help-outline"></ion-icon>
+              <ion-icon name="log-out"></ion-icon>
             </span>
-            <span class="title">Help</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#">
-            <span class="icon">
-              <ion-icon name="settings-outline"></ion-icon>
-            </span>
-            <span class="title">Settings</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#">
-            <span class="icon">
-              <ion-icon name="lock-closed-outline"></ion-icon>
-            </span>
-            <span class="title">Password</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#">
-            <span class="icon">
-              <ion-icon name="log-out-outline"></ion-icon>
-            </span>
-            <span class="title">Sign Out</span>
+            <span class="title">Log Out</span>
           </a>
         </li>
       </ul>
@@ -100,45 +73,45 @@
       <div class="cardBox">
         <div class="card">
           <div>
-            <div class="numbers">1,504</div>
-            <div class="cardName">Daily Views</div>
+            <div class="numbers">7</div>
+            <div class="cardName">Categories</div>
           </div>
 
           <div class="iconBx">
-            <ion-icon name="eye-outline"></ion-icon>
+            <ion-icon name="albums"></ion-icon>
           </div>
         </div>
 
         <div class="card">
           <div>
             <div class="numbers">80</div>
-            <div class="cardName">Sales</div>
+            <div class="cardName">Tags</div>
           </div>
 
           <div class="iconBx">
-            <ion-icon name="cart-outline"></ion-icon>
+            <ion-icon name="pricetag"></ion-icon>
           </div>
         </div>
 
         <div class="card">
           <div>
             <div class="numbers">284</div>
-            <div class="cardName">Comments</div>
+            <div class="cardName">writers</div>
           </div>
 
           <div class="iconBx">
-            <ion-icon name="chatbubbles-outline"></ion-icon>
+            <ion-icon name="people"></ion-icon>
           </div>
         </div>
 
         <div class="card">
           <div>
-            <div class="numbers">$7,842</div>
-            <div class="cardName">Earning</div>
+            <div class="numbers">7</div>
+            <div class="cardName">Archived wikis</div>
           </div>
 
           <div class="iconBx">
-            <ion-icon name="cash-outline"></ion-icon>
+            <ion-icon name="newspaper"></ion-icon>
           </div>
         </div>
       </div>
@@ -148,9 +121,20 @@
         <div class="categoryTable">
           <div class="cardHeader">
             <h2>Categories</h2>
-            <a href="#" class="btn">Add Category</a>
+            <button class="btn" id="show-category">Add Category</button>
           </div>
-
+          <div class="popup catpopup">
+            <div class="close-btn"><ion-icon name="close-circle-outline"></ion-icon></div>
+            <form action="<?php echo URLROOT; ?>/dashboard/addCategory">
+              <h2>Add Category</h2>
+              <div class="form-element">
+                <input name="name" type="text" placeholder="New Category name">
+              </div>
+              <div class="form-element">
+                <button>Add</button>
+              </div>
+            </form>
+          </div>
           <table>
             <thead>
               <tr>
@@ -163,12 +147,12 @@
             <tbody>
               <?php foreach ($data["categories"] as $category) { ?>
                 <tr>
-                  <td><?php echo $category->name; ?></td>
+                  <td><?php echo $category->__get("name"); ?></td>
                   <td class="btns">
-                    <input type="hidden" value="<?php //echo $category["category_id"]; 
-                                                      ?>">
+                    <input type="hidden" value="<?php //echo $category["category_id"];
+                                                ?>">
                     <button name="modifyCategory" class="btn update_btn"><ion-icon name="create"></ion-icon></button>
-                    <form action="<?php //echo $_SERVER['PHP_SELF']; 
+                    <form action="<?php //echo $_SERVER['PHP_SELF'];
                                   ?>" method="post">
                       <input id="updateCategoryName" name="category_id" type="hidden" value="">
                       <button name="deleteCategory" class="btn delete_btn" type="submit"><ion-icon name="trash-sharp"></ion-icon></button>
@@ -192,9 +176,20 @@
         <div class="tagTable">
           <div class="cardHeader">
             <h2>Tags</h2>
-            <a href="#" class="btn">Add Tag</a>
+            <button class="btn" id="show-tag">Add Tag</button>
           </div>
-
+          <div class="popup tagpopup">
+            <div class="close-btn"><ion-icon name="close-circle-outline"></ion-icon></div>
+            <form action="">
+              <h2>Add Tag</h2>
+              <div class="form-element">
+                <input type="text" placeholder="New Category name">
+              </div>
+              <div class="form-element">
+                <button>Add</button>
+              </div>
+            </form>
+          </div>
           <table>
             <thead>
               <tr>
@@ -207,19 +202,19 @@
 
               <tr>
                 <td>
-                  <h4><?php echo $tag->name; ?></h4>
+                  <h4><?php echo $tag->__get("name"); ?></h4>
                 </td>
                 <td class="btns">
-                    <input type="hidden" value="<?php //echo $category["category_id"]; 
-                                                      ?>">
-                    <button name="modifyCategory" class="btn update_btn"><ion-icon name="create"></ion-icon></button>
-                    <form action="<?php //echo $_SERVER['PHP_SELF']; 
-                                  ?>" method="post">
-                      <input id="updateCategoryName" name="category_id" type="hidden" value="">
-                      <button name="deleteCategory" class="btn delete_btn" type="submit"><ion-icon name="trash-sharp"></ion-icon></button>
-                    </form>
+                  <input type="hidden" value="<?php //echo $category["category_id"]; 
+                                              ?>">
+                  <button name="modifyCategory" class="btn update_btn"><ion-icon name="create"></ion-icon></button>
+                  <form action="<?php //echo $_SERVER['PHP_SELF']; 
+                                ?>" method="post">
+                    <input id="updateCategoryName" name="category_id" type="hidden" value="">
+                    <button name="deleteCategory" class="btn delete_btn" type="submit"><ion-icon name="trash-sharp"></ion-icon></button>
+                  </form>
 
-                  </td>
+                </td>
               </tr>
 
             <?php

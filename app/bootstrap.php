@@ -12,3 +12,6 @@ spl_autoload_register(function ($className) {
 
   require_once $classPath . $className . '.php';
 });
+
+require_once "models/category.php";
+require_once "models/tag.php";

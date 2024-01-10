@@ -24,9 +24,19 @@ class Dashboard extends Controller
       'categories' => $this->CategoryDao->getAllCategories(),
       'tags' => $this->TagDao->getAllTags(),
     ];
+   
 
     $this->view('pages/dashboard', $data);
   }
+
+
+  public function addCategory(){
+    $data = [
+      'name' => $_POST['name'],
+    ];
+    $this->CategoryDao->insertCategory($data);
+  }
+
 
   public function deleteCategory($id) {
     if($this->CategoryDao->deleteCategory($id)) {

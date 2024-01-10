@@ -19,3 +19,24 @@ toggle.onclick = function () {
   navigation.classList.toggle("active");
   main.classList.toggle("active");
 };
+
+
+
+//Popups
+
+
+document.getElementById("show-tag").addEventListener("click", function() {
+  document.querySelector(".tagpopup").classList.add("active");
+});
+
+document.querySelector(".popup .close-btn").addEventListener("click", function() {
+  document.querySelector(".tagpopup").classList.remove("active");
+});
+
+document.getElementById("show-category").addEventListener("click", function() {
+  document.querySelector(".catpopup").classList.add("active");
+});
+
+document.querySelector(".popup .close-btn").addEventListener("click", function() {
+  document.querySelector(".catpopup").classList.remove("active");
+});
