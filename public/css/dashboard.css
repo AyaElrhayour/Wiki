@@ -10,7 +10,7 @@
 }
 
 :root {
-  --blue: #191919;
+  --blue: #001524;
   --white: #fff;
   --gray: #f6f6f6;
   --black1: #222;
@@ -19,7 +19,7 @@
 
 body {
   min-height: 100vh;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 .container {
@@ -269,12 +269,12 @@ body {
               transform 20ms ease-in-out 0ms;
 }
 
-.tagpopup.active{
-  transform: translate(-50%, -50%) scale(1);
-}
+/* .tagpopup.active{
+  transform: translate(50%, -50%) scale(1);
+} */
 
-.catpopup.active{
-  transform: translate(100%, -50%) scale(1);
+.popup.active{
+  transform: translate(22%, -50%) scale(1);
   z-index: 1;
   display: block;
   transition: top 0ms ease-in-out 0ms, 
@@ -294,7 +294,7 @@ body {
 
 .popup form h2{
   text-align: center;
-  color: #191919;
+  color: var(--blue);
   margin: 10px 0px 20px;
   font-size: 25px;
 }
@@ -307,12 +307,12 @@ body {
 
 .popup form .form-element input{
   border: none;
-  border-bottom: 2px solid #191919;
+  border-bottom: 2px solid var(--blue);
   width: 90%;
 }
 
 .popup form .form-element button{
-  background-color: #191919;
+  background-color:var(--blue);
   width: 90%;
   padding: 10px;
   color: #fff;

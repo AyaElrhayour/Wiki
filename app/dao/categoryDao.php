@@ -4,10 +4,13 @@
 class CategoryDao extends crudDao
 {
 
+  private $categoryEntity;
+
   public function __construct()
   {
     parent::__construct();
     $this->tablename = 'categories';
+    $this->categoryEntity = new Category();
   }
 
   public function getAllCategories()
@@ -21,23 +24,25 @@ class CategoryDao extends crudDao
     return $array;
   }
 
-  public function insertCategory($data)
-  {
-    return $this->insert($data);
-  }
-
-  public function deleteCategory($id)
-  {
-    return $this->delete($id);
-  }
-
   public function getCategoryById($id)
   {
     return $this->getById($id);
   }
 
-  public function searchForCategory($column, $data){
-    return $this->search($column, $data);
+  public function insertCategory($name)
+  {
+    $this->categoryEntity->__set("name", $name);
+    return $this->insert($this->categoryEntity);
   }
 
+  public function deleteCategory($id)
+  {
+    $this->categoryEntity->id = $id;
+    return $this->delete($this->categoryEntity);
+  }
+
+  public function searchForCategory($column, $data)
+  {
+    return $this->search($column, $data);
+  }
 }

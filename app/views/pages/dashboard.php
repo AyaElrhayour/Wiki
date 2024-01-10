@@ -124,11 +124,11 @@
             <button class="btn" id="show-category">Add Category</button>
           </div>
           <div class="popup catpopup">
-            <div class="close-btn"><ion-icon name="close-circle-outline"></ion-icon></div>
-            <form action="<?php echo URLROOT; ?>/dashboard/addCategory">
+            <div class="close-btn catclose-btn"><ion-icon name="close-circle-outline"></ion-icon></div>
+            <form method="post" action="<?php echo URLROOT; ?>/dashboard/addCategory">
               <h2>Add Category</h2>
               <div class="form-element">
-                <input name="name" type="text" placeholder="New Category name">
+                <input name="name" type="text" placeholder="New Category Name">
               </div>
               <div class="form-element">
                 <button>Add</button>
@@ -159,7 +159,6 @@
                     </form>
 
                   </td>
-
                 </tr>
 
               <?php
@@ -179,11 +178,11 @@
             <button class="btn" id="show-tag">Add Tag</button>
           </div>
           <div class="popup tagpopup">
-            <div class="close-btn"><ion-icon name="close-circle-outline"></ion-icon></div>
+            <div class="close-btn tagclose-btn"><ion-icon name="close-circle-outline"></ion-icon></div>
             <form action="">
               <h2>Add Tag</h2>
               <div class="form-element">
-                <input type="text" placeholder="New Category name">
+                <input type="text" placeholder="New Tag Name">
               </div>
               <div class="form-element">
                 <button>Add</button>

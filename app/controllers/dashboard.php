@@ -31,10 +31,9 @@ class Dashboard extends Controller
 
 
   public function addCategory(){
-    $data = [
-      'name' => $_POST['name'],
-    ];
-    $this->CategoryDao->insertCategory($data);
+    $name = $_POST['name'];
+    $this->CategoryDao->insertCategory($name);
+    header("location: ");
   }
 
 

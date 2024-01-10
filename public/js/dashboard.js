@@ -29,7 +29,7 @@ document.getElementById("show-tag").addEventListener("click", function() {
   document.querySelector(".tagpopup").classList.add("active");
 });
 
-document.querySelector(".popup .close-btn").addEventListener("click", function() {
+document.getElementsByClassName("tagclose-btn")[0].addEventListener("click", function() {
   document.querySelector(".tagpopup").classList.remove("active");
 });
 
@@ -37,6 +37,7 @@ document.getElementById("show-category").addEventListener("click", function() {
   document.querySelector(".catpopup").classList.add("active");
 });
 
-document.querySelector(".popup .close-btn").addEventListener("click", function() {
+document.getElementsByClassName("catclose-btn")[0].addEventListener("click", function() {
   document.querySelector(".catpopup").classList.remove("active");
 });
+
