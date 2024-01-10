@@ -43,8 +43,8 @@ class Dashboard extends Controller
   }
 
 
-  public function deleteCategory($id) {
-    die('here');
+  public function deleteCategory() {
+    $id = $_POST["id"];
     if($this->CategoryDao->deleteCategory($id)) {
       redirect("dashboard");
     }

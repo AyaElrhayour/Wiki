@@ -152,9 +152,8 @@
                     <input type="hidden" value="<?php //echo $category["category_id"];
                                                 ?>">
                     <button name="modifyCategory" class="btn update_btn"><ion-icon name="create"></ion-icon></button>
-                    <form action="<?php //echo $_SERVER['PHP_SELF'];
-                                  ?>" method="post">
-                      <input id="updateCategoryName" name="category_id" type="hidden" value="">
+                    <form action="<?php echo URLROOT; ?>/dashboard/deleteCategory" method="post">
+                      <input id="deleteCategory" name="id" type="hidden" value="<?=$category->__get("id");?>">
                       <button name="deleteCategory" class="btn delete_btn" type="submit"><ion-icon name="trash-sharp"></ion-icon></button>
                     </form>
 

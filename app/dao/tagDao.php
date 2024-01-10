@@ -29,9 +29,10 @@ class TagDao extends crudDao
     return $this->insert($this->tagEntity);
   }
 
-  public function deleteTags($id)
+  public function deleteTag($id)
   {
-    return $this->delete($id);
+    $this->tagEntity->id = $id;
+    return $this->delete($this->tagEntity);
   }
 
   public function searchForTags($column, $data)
