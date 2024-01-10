@@ -24,30 +24,40 @@ class Dashboard extends Controller
       'categories' => $this->CategoryDao->getAllCategories(),
       'tags' => $this->TagDao->getAllTags(),
     ];
-   
+
 
     $this->view('pages/dashboard', $data);
   }
 
 
-  public function addCategory(){
+  public function addCategory()
+  {
     $name = $_POST['name'];
     $this->CategoryDao->insertCategory($name);
     redirect("dashboard");
   }
 
-  public function addTag(){
+  public function addTag()
+  {
     $name = $_POST['name'];
     $this->TagDao->insertTags($name);
     redirect("dashboard");
   }
 
 
-  public function deleteCategory() {
+  public function deleteCategory()
+  {
     $id = $_POST["id"];
-    if($this->CategoryDao->deleteCategory($id)) {
+    if ($this->CategoryDao->deleteCategory($id)) {
       redirect("dashboard");
     }
   }
 
+  public function deleteTag()
+  {
+    $id = $_POST["id"];
+    if ($this->TagDao->deleteTag($id)) {
+      redirect("dashboard");
+    }
+  }
 }

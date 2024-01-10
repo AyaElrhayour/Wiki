@@ -153,7 +153,7 @@
                                                 ?>">
                     <button name="modifyCategory" class="btn update_btn"><ion-icon name="create"></ion-icon></button>
                     <form action="<?php echo URLROOT; ?>/dashboard/deleteCategory" method="post">
-                      <input id="deleteCategory" name="id" type="hidden" value="<?=$category->__get("id");?>">
+                      <input id="deleteCategory" name="id" type="hidden" value="<?= $category->__get("id"); ?>">
                       <button name="deleteCategory" class="btn delete_btn" type="submit"><ion-icon name="trash-sharp"></ion-icon></button>
                     </form>
 
@@ -205,10 +205,10 @@
                 <td class="btns">
                   <input type="hidden" value="<?php ?>">
                   <button name="modifyCategory" class="btn update_btn"><ion-icon name="create"></ion-icon></button>
-                  
-                  <form action="<?php echo URLROOT; ?>/dashboard/deleteCategory" method="post">
-                    <input id="deleteCategory" name="id" type="hidden" value="">
-                    <button name="deleteCategory" class="btn delete_btn" type="submit"><ion-icon name="trash-sharp"></ion-icon></button>
+
+                  <form action="<?php echo URLROOT; ?>/dashboard/deleteTag" method="post">
+                    <input id="deleteTag" name="id" type="hidden" value="<?php echo $tag->__get("id"); ?>">
+                    <button name="deleteTag" class="btn delete_btn" type="submit"><ion-icon name="trash-sharp"></ion-icon></button>
                   </form>
 
                 </td>
