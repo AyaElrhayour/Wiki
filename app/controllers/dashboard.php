@@ -33,13 +33,21 @@ class Dashboard extends Controller
   public function addCategory(){
     $name = $_POST['name'];
     $this->CategoryDao->insertCategory($name);
-    header("location: ");
+    redirect("dashboard");
+  }
+
+  public function addTag(){
+    $name = $_POST['name'];
+    $this->TagDao->insertTags($name);
+    redirect("dashboard");
   }
 
 
   public function deleteCategory($id) {
+    die('here');
     if($this->CategoryDao->deleteCategory($id)) {
       redirect("dashboard");
     }
   }
+
 }

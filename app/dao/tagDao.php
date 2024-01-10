@@ -3,10 +3,13 @@
 class TagDao extends crudDao
 {
 
+  private $tagEntity;
+
   public function __construct()
   {
     parent::__construct();
     $this->tablename = 'tags';
+    $this->tagEntity = new Tag();
   }
 
   public function getAllTags()
@@ -20,9 +23,10 @@ class TagDao extends crudDao
     return $array;
   }
 
-  public function insertTags($data)
+  public function insertTags($name)
   {
-    return $this->insert($data);
+    $this->tagEntity->__set("name", $name);
+    return $this->insert($this->tagEntity);
   }
 
   public function deleteTags($id)

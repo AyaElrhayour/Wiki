@@ -116,7 +116,7 @@
         </div>
       </div>
 
-      <!-- ========================= List ========================= -->
+      <!-- ========================= Category ========================= -->
       <div class="details">
         <div class="categoryTable">
           <div class="cardHeader">
@@ -171,7 +171,7 @@
           </table>
         </div>
 
-        <!-- ========================= New Customers ========================= -->
+        <!-- ========================= Tag ========================= -->
         <div class="tagTable">
           <div class="cardHeader">
             <h2>Tags</h2>
@@ -179,10 +179,10 @@
           </div>
           <div class="popup tagpopup">
             <div class="close-btn tagclose-btn"><ion-icon name="close-circle-outline"></ion-icon></div>
-            <form action="">
+            <form method="post" action="<?php echo URLROOT; ?>/dashboard/addTag">
               <h2>Add Tag</h2>
               <div class="form-element">
-                <input type="text" placeholder="New Tag Name">
+                <input name="name" type="text" placeholder="New Tag Name">
               </div>
               <div class="form-element">
                 <button>Add</button>
@@ -204,12 +204,11 @@
                   <h4><?php echo $tag->__get("name"); ?></h4>
                 </td>
                 <td class="btns">
-                  <input type="hidden" value="<?php //echo $category["category_id"]; 
-                                              ?>">
+                  <input type="hidden" value="<?php ?>">
                   <button name="modifyCategory" class="btn update_btn"><ion-icon name="create"></ion-icon></button>
-                  <form action="<?php //echo $_SERVER['PHP_SELF']; 
-                                ?>" method="post">
-                    <input id="updateCategoryName" name="category_id" type="hidden" value="">
+                  
+                  <form action="<?php echo URLROOT; ?>/dashboard/deleteCategory" method="post">
+                    <input id="deleteCategory" name="id" type="hidden" value="">
                     <button name="deleteCategory" class="btn delete_btn" type="submit"><ion-icon name="trash-sharp"></ion-icon></button>
                   </form>
 
