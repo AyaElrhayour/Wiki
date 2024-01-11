@@ -149,11 +149,12 @@
                 <tr>
                   <td><?php echo $category->__get("name"); ?></td>
                   <td class="btns">
-                    <input type="hidden" value="<?php //echo $category["category_id"];
-                                                ?>">
+                    <input type="hidden" value="<?= $category->__get("id"); ?>">
                     <button name="modifyCategory" class="btn update_category_btn"><ion-icon name="create"></ion-icon></button>
+
+                    <!-- delete -->
                     <form action="<?php echo URLROOT; ?>/dashboard/deleteCategory" method="post">
-                      <input id="deleteCategory" name="id" type="hidden" value="<?= $category->__get("id"); ?>">
+                      <input class="categoryId" name="id" type="hidden" value="<?= $category->__get("id"); ?>">
                       <button name="deleteCategory" class="btn delete_btn" type="submit"><ion-icon name="trash-sharp"></ion-icon></button>
                     </form>
 
@@ -165,10 +166,11 @@
               }  ?>
               <div class="popup categorymodifypopup">
                 <div class="close-btn categorymodifyclose-btn"><ion-icon name="close-circle-outline"></ion-icon></div>
-                <form method="post" action="<?php echo URLROOT; ?>/dashboard/updateCategory">
+                <form method="post" action="<?php echo URLROOT; ?>/dashboard/modifyCategory">
                   <h2>Update Category</h2>
                   <div class="form-element">
-                    <input name="name" type="text" placeholder="New Category Name">
+                    <input id="categoryID" name="id" type="hidden">
+                    <input name="name" id="categoryName" type="text" placeholder="New Category Name">
                   </div>
                   <div class="form-element">
                     <button>Update</button>

@@ -35,6 +35,16 @@ class CategoryDao extends crudDao
     return $this->insert($this->categoryEntity);
   }
 
+  public function updateCategory($data)
+  {
+    $this->categoryEntity->__set("name", $data['name']);
+    $this->categoryEntity->__set("id", $data['id']);
+    $updateData = ['name' => $this->categoryEntity->__get('name')];
+
+    return $this->update($this->categoryEntity, $updateData);
+  }
+
+
   public function deleteCategory($id)
   {
     $this->categoryEntity->id = $id;

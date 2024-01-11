@@ -10,6 +10,8 @@ class crudDao
   {
     $this->db = new Database();
   }
+
+
   protected function getAll()
   {
     $this->db->query("SELECT " . implode(', ', $this->All) . " FROM {$this->tablename}");
@@ -19,7 +21,7 @@ class crudDao
 
   protected function insert($entity)
   {
-    $data = ["name" => $entity->__get("name") ];
+    $data = ["name" => $entity->__get("name")];
 
     $columns = implode(', ', array_keys($data));
     $values = ':' . implode(', :', array_keys($data));
@@ -31,6 +33,26 @@ class crudDao
     }
     return $this->db->execute();
   }
+
+  protected function update($entity, $data)
+  {
+    $columns = implode(', ', array_map(function ($column) {
+      return "$column = :$column";
+    }, array_keys($data)));
+
+    $query = "UPDATE {$this->tablename} SET $columns WHERE id = :id";
+
+    $this->db->query($query);
+
+    foreach ($data as $key => $value) {
+      $this->db->bind(":$key", $value);
+    }
+    $this->db->bind(':id', $entity->__get('id'));
+
+    return $this->db->execute();
+  }
+
+
 
   protected function delete($entity)
   {
@@ -50,7 +72,8 @@ class crudDao
   }
 
 
-  protected function search($column, $data){
+  protected function search($column, $data)
+  {
 
     $columns = implode(', ', array_keys($data));
 
@@ -59,5 +82,4 @@ class crudDao
 
     return $this->db->execute();
   }
-
 }

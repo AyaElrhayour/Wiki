@@ -23,10 +23,6 @@
         <input type="text" name="last_name" placeholder="last name">
         <input type="text" name="email" placeholder="email">
         <input type="password" name="password" placeholder="password">
-        <select name="role">
-          <option value="1">Admin</option>
-          <option value="2">User</option>
-        </select>
         <button name="signup">submit</button>
       </form>
     </div>
