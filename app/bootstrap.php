@@ -15,4 +15,6 @@ spl_autoload_register(function ($className) {
 
 require_once "models/category.php";
 require_once "models/tag.php";
+require_once "models/wiki.php";
+require_once "models/wiki_tag.php";
 require_once "helpers/redirect.php";
