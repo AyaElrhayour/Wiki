@@ -29,6 +29,15 @@ class TagDao extends crudDao
     return $this->insert($this->tagEntity);
   }
 
+  public function updateTag($data)
+  {
+    $this->tagEntity->__set("name", $data['name']);
+    $this->tagEntity->__set("id", $data['id']);
+    $updateData = ['name' => $this->tagEntity->__get('name')];
+
+    return $this->update($this->tagEntity, $updateData);
+  }
+
   public function deleteTag($id)
   {
     $this->tagEntity->id = $id;

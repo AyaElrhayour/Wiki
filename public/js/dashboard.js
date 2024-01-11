@@ -72,13 +72,26 @@ document.getElementsByClassName("catclose-btn")[0].addEventListener("click", fun
 
 const categoryIdInput = document.getElementById("categoryID");
 const categoryNameInput = document.getElementById("categoryName");
-// const categoryIds = document.querySelectorAll(".categoryId");
 const updateBtnCategory = document.querySelectorAll(".update_category_btn");
 
 updateBtnCategory.forEach((btn) => (
   btn.addEventListener("click", ()=>{
     categoryIdInput.value = btn.parentElement.childNodes[1].value
     categoryNameInput.value = btn.parentElement.parentElement.childNodes[1].textContent
+   
+  })
+  
+));
+
+
+const tagIdInput = document.getElementById("tagID");
+const tagNameInput = document.getElementById("tagName");
+const updateBtnTag = document.querySelectorAll(".tagupdate_btn");
+
+updateBtnTag.forEach((btn) => (
+  btn.addEventListener("click", ()=>{
+    tagIdInput.value = btn.parentElement.childNodes[1].value
+    tagNameInput.value = btn.parentElement.parentElement.childNodes[1].textContent
    
   })
   

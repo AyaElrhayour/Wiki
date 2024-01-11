@@ -43,6 +43,7 @@ class Dashboard extends Controller
     $this->TagDao->insertTags($name);
     redirect("dashboard");
   }
+
   public function modifyCategory()
   {
     $data = [
@@ -50,6 +51,16 @@ class Dashboard extends Controller
       "id" => $_POST['id']
     ];
     $this->CategoryDao->updateCategory($data);
+    redirect("dashboard");
+  }
+
+  public function modifyTag()
+  {
+    $data = [
+      'name' => $_POST['name'],
+      "id" => $_POST['id']
+    ];
+    $this->TagDao->updateTag($data);
     redirect("dashboard");
   }
 

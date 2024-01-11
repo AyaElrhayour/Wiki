@@ -157,12 +157,9 @@
                       <input class="categoryId" name="id" type="hidden" value="<?= $category->__get("id"); ?>">
                       <button name="deleteCategory" class="btn delete_btn" type="submit"><ion-icon name="trash-sharp"></ion-icon></button>
                     </form>
-
                   </td>
                 </tr>
-
               <?php
-
               }  ?>
               <div class="popup categorymodifypopup">
                 <div class="close-btn categorymodifyclose-btn"><ion-icon name="close-circle-outline"></ion-icon></div>
@@ -212,14 +209,12 @@
             <?php foreach ($data["tags"] as $tag) { ?>
 
               <tr>
-                <td>
-                  <h4><?php echo $tag->__get("name"); ?></h4>
-                </td>
+                <td><?php echo $tag->__get("name"); ?></td>
                 <td class="btns">
-                  <input type="hidden" value="<?php ?>">
-
+                  <input type="hidden" value="<?= $tag->__get("id"); ?>">
                   <button name="modifyTag" class="btn tagupdate_btn update_btn" id="show-modifytag"><ion-icon name="create"></ion-icon></button>
 
+                  <!-- delete -->
                   <form action="<?php echo URLROOT; ?>/dashboard/deleteTag" method="post">
                     <input id="deleteTag" name="id" type="hidden" value="<?php echo $tag->__get("id"); ?>">
                     <button name="deleteTag" class="btn delete_btn" type="submit"><ion-icon name="trash-sharp"></ion-icon></button>
@@ -229,10 +224,11 @@
             <?php } ?>
             <div class="popup tagmodifypopup">
               <div class="close-btn tagmodifyclose-btn"><ion-icon name="close-circle-outline"></ion-icon></div>
-              <form method="post" action="<?php echo URLROOT; ?>/dashboard/addTag">
+              <form method="post" action="<?php echo URLROOT; ?>/dashboard/modifyTag">
                 <h2>Update Tag</h2>
                 <div class="form-element">
-                  <input name="name" type="text" placeholder="New Tag Name">
+                 <input id="tagID" name="id" type="hidden">
+                  <input name="name" id="tagName" type="text" placeholder="New Tag Name">
                 </div>
                 <div class="form-element">
                   <button>Update</button>
