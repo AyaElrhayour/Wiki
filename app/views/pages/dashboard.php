@@ -125,10 +125,11 @@
           </div>
           <div class="popup catpopup">
             <div class="close-btn catclose-btn"><ion-icon name="close-circle-outline"></ion-icon></div>
-            <form method="post" action="<?php echo URLROOT; ?>/dashboard/addCategory">
+            <form method="post" enctype="multipart/form-data" action="<?php echo URLROOT; ?>/dashboard/addCategory">
               <h2>Add Category</h2>
               <div class="form-element">
                 <input name="name" type="text" placeholder="New Category Name">
+                <input name="img" type="file">
               </div>
               <div class="form-element">
                 <button>Add</button>
@@ -138,6 +139,7 @@
           <table>
             <thead>
               <tr>
+                <td>Image</td>
                 <td>Category</td>
                 <td>Operations</td>
 
@@ -147,6 +149,7 @@
             <tbody>
               <?php foreach ($data["categories"] as $category) { ?>
                 <tr>
+                  <td><img src="<?php echo URLROOT; ?>/img/<?php echo $category->__get("image"); ?>" alt=""></td>
                   <td><?php echo $category->__get("name"); ?></td>
                   <td class="btns">
                     <input type="hidden" value="<?= $category->__get("id"); ?>">
@@ -227,7 +230,7 @@
               <form method="post" action="<?php echo URLROOT; ?>/dashboard/modifyTag">
                 <h2>Update Tag</h2>
                 <div class="form-element">
-                 <input id="tagID" name="id" type="hidden">
+                  <input id="tagID" name="id" type="hidden">
                   <input name="name" id="tagName" type="text" placeholder="New Tag Name">
                 </div>
                 <div class="form-element">
