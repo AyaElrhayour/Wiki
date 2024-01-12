@@ -18,7 +18,7 @@ class CategoryDao extends crudDao
     $array = [];
     $categories = $this->getAll();
     foreach ($categories as $category) {
-      $categoryEntity = new Category($category->id, $category->name);
+      $categoryEntity = new Category($category->id, $category->name, $category->image);
       $array[] = $categoryEntity;
     }
     return $array;
@@ -29,11 +29,16 @@ class CategoryDao extends crudDao
     return $this->getById($id);
   }
 
-  public function insertCategory($name)
+  public function insertCategory($data)
   {
-    $this->categoryEntity->__set("name", $name);
-    return $this->insert($this->categoryEntity);
+    $this->categoryEntity->__set("name", $data['name']);
+    $this->categoryEntity->__set("image", $data['image']);
+    $insertData = ['name' => $this->categoryEntity->__get('name'), 'image' => $this->categoryEntity->__get('image')];
+
+    return $this->insert($insertData);
   }
+
+
 
   public function updateCategory($data)
   {
