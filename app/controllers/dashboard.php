@@ -1,6 +1,5 @@
 <?php
 
-
 class Dashboard extends Controller
 {
 
@@ -30,12 +29,29 @@ class Dashboard extends Controller
   }
 
 
+  // public function addCategory()
+  // {
+  //   $name = $_POST['name'];
+  //   $image = $_POST['image'];
+  //   $this->CategoryDao->insertCategory($name, $image);
+  //   redirect("dashboard");
+  // }
+
   public function addCategory()
   {
-    $name = $_POST['name'];
-    $this->CategoryDao->insertCategory($name);
-    redirect("dashboard");
+    $data = [
+      "name" => $_POST['name'],
+      "image" =>  $_FILES['img']['name']
+    ];
+    if ($this->CategoryDao->insertCategory($data)) {
+      $file = $_FILES['img']['name'];
+      $folder = './img/' . $file;
+      $fileTmp = $_FILES['img']['tmp_name'];
+      move_uploaded_file($fileTmp, $folder);
+      redirect("dashboard");
+    }
   }
+
 
   public function addTag()
   {
