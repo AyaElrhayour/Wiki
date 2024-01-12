@@ -137,7 +137,7 @@ class Users extends Controller
     if ($role === 'admin') {
       header('location:' . URLROOT . '/dashboard');
     } elseif ($role === 'user') {
-      header('location:' . URLROOT . '/pages/home');
+      header('location:' . URLROOT . '/home');
     }
   }
 }
