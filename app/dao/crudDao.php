@@ -21,7 +21,12 @@ class crudDao
 
   protected function insert($entity)
   {
-    $data = ["name" => $entity->__get("name")];
+    $data = [];
+    foreach ($entity as $property => $value) {
+      if ($property != 'id') {
+        $data[$property] = $value;
+      }
+    }
 
     $columns = implode(', ', array_keys($data));
     $values = ':' . implode(', :', array_keys($data));
@@ -31,8 +36,10 @@ class crudDao
     foreach ($data as $key => $value) {
       $this->db->bind(":$key", $value);
     }
+
     return $this->db->execute();
   }
+
 
   protected function update($entity, $data)
   {
